@@ -14,7 +14,9 @@ Just want to use the bot? Use this link: https://discordapp.com/oauth2/authorize
 
 ## B | USER FRIENDLY VERSION
 
-Can't or don't want to manually compile the project? Check out the Releases folder, where you can get the latest version. The only thing that needs customization in here is the config.xml, which can be edited with a text editor such as Notepad or Notepad++. Please note this is EXACTLY the same as having the bot join your server, which you can do at https://discordapp.com/oauth2/authorize?client_id=366934149791219723&scope=bot&permissions=142400
+Can't or don't want to manually compile the project? Check out the Releases folder, where you can get the latest version. The only thing that needs customization in here is the config.xml, which can be edited with a text editor such as Notepad or Notepad++. 
+
+Please note this is EXACTLY the same as having the bot join your server, which you can do at https://discordapp.com/oauth2/authorize?client_id=366934149791219723&scope=bot&permissions=142400
 
 ## C | COMPILATION OF THE PROJECT
 
