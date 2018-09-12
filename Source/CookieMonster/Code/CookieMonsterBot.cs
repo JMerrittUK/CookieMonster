@@ -17,7 +17,7 @@ namespace CookieMonster
     /// This is an example of a Discord bot build on top of the .NET wrapper by RogueException (provided under MIT licence)
     /// 
     /// Want to invite the original bot, fully unmodified?
-    ///  https://discordapp.com/oauth2/authorize?client_id=366934149791219723&scope=bot&permissions=142400
+    /// https://discordapp.com/oauth2/authorize?client_id=366934149791219723&scope=bot&permissions=142400
     /// </summary>
     public class CookieMonsterBot
     {
@@ -119,10 +119,10 @@ namespace CookieMonster
             {
                 foreach(SocketUser user in guild.Users)
                 {
+                    UserData.CookieUser cookieUser = FindCookieUser(user.Username + "#" + user.Discriminator);
+                    
                     if (user.Game.HasValue)
                     {
-                        UserData.CookieUser cookieUser = FindCookieUser(user.Username + "#" + user.Discriminator);
-
                         if (user.Game.Value.Name == "Spotify")
                         {
                             cookieUser.spotifyTime++;
@@ -180,8 +180,10 @@ namespace CookieMonster
                         return userInList;
                 }
             }
+            UserData.CookieUser newUser = new UserData.CookieUser { userName = userReference, cookies = 0 };
+            cookieMonsterData.users.Add(newUser);
 
-            return new UserData.CookieUser { userName = userReference, cookies = 0 };
+            return newUser;
         }
 
         private UserData.CookieChannel FindCookieChannel(ISocketMessageChannel channelReference)

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfCookieUser xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <CookieUser>
+    <userName>Cookie Monster#6276</userName>
+    <cookies>0</cookies>
+    <spotifyTime>0</spotifyTime>
+    <allGames />
+  </CookieUser>
+</ArrayOfCookieUser>
