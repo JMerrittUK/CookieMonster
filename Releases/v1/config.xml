@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <token>FILL WITH YOUR TOKEN</token>
+  <botID>FILL WITH YOUR BOT ID</botID>
+  <botPictureURL>FILL WITH HTTP LINK TO YOUR BOT'S PICTURE</botPictureURL>
+  <displayAllGames>false</displayAllGames>
+  <totalGamesToDisplay>4</totalGamesToDisplay>
+  <cookieDropChance>PERCENTAGE OUT OF 100</cookieDropChance>
+  <color>
+    <r>255</r>
+    <g>255</g>
+    <b>255</b>
+  </color>
+</Config>
