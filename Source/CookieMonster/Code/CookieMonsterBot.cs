@@ -165,7 +165,7 @@ namespace CookieMonster
 
             output.Close();
 
-            Console.WriteLine("Total servers: " + _client.Guilds.Count + " | Total users tracked: " + cookieMonsterData.users.Count);
+            Console.WriteLine("Total servers: " + _client.Guilds.Count + " | Total users: " + cookieMonsterData.users.Count);
         }
 
         #region Message Handling
@@ -180,7 +180,13 @@ namespace CookieMonster
                         return userInList;
                 }
             }
-            UserData.CookieUser newUser = new UserData.CookieUser { userName = userReference, cookies = 0 };
+
+            UserData.CookieUser newUser = new UserData.CookieUser
+            {
+                userName = userReference,
+                cookies = 0
+            };
+
             cookieMonsterData.users.Add(newUser);
 
             return newUser;
@@ -196,7 +202,13 @@ namespace CookieMonster
                         return channelInList;
                 }
             }
-            UserData.CookieChannel newChannel = new UserData.CookieChannel { channel = channelReference, cookieSpawnChance = config.cookieDropChance };
+
+            UserData.CookieChannel newChannel = new UserData.CookieChannel
+            {
+                channel = channelReference,
+                cookieSpawnChance = config.cookieDropChance,
+                commandPrefix = config.commandPrefix
+            };
 
             cookieMonsterData.activeChannels.Add(newChannel);
 
@@ -240,7 +252,7 @@ namespace CookieMonster
                         break;
 
 
-                    case "!stats":
+                    case "-stats":
                         EmbedBuilder stats = new EmbedBuilder();
 
                         stats.WithTitle(activeUser.userName);
@@ -256,19 +268,27 @@ namespace CookieMonster
                         games = games.OrderByDescending(g => g.timeSpentInSeconds).ToList();
 
                         // We check to see if we need to display all of the games in this persons storage.
-                        if (config.displayAllGames)
+                        if (games.Count > 0)
                         {
-                            foreach (UserData.GameTime game in games)
+                            int gameCount = games.Count;
+
+                            if (gameCount > config.totalGamesToDisplay)
+                                gameCount = config.totalGamesToDisplay;
+
+                            if (config.displayAllGames)
                             {
-                                stats.AddInlineField(game.applicationName, UserData.Utility.SecondsToString(game.timeSpentInSeconds));
+                                foreach (UserData.GameTime game in games)
+                                {
+                                    stats.AddInlineField(game.applicationName, UserData.Utility.SecondsToString(game.timeSpentInSeconds));
+                                }
                             }
-                        }
-                        else
-                        {
-                            for (int i = 0; i < config.totalGamesToDisplay; i++)
+                            else
                             {
-                                UserData.GameTime game = games[i];
-                                stats.AddInlineField(game.applicationName, UserData.Utility.SecondsToString(game.timeSpentInSeconds));
+                                for (int i = 0; i < gameCount; i++)
+                                {
+                                    UserData.GameTime game = games[i];
+                                    stats.AddInlineField(game.applicationName, UserData.Utility.SecondsToString(game.timeSpentInSeconds));
+                                }
                             }
                         }
 

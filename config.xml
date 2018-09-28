@@ -6,6 +6,7 @@
   <displayAllGames>false</displayAllGames>
   <totalGamesToDisplay>4</totalGamesToDisplay>
   <cookieDropChance>PERCENTAGE OUT OF 100</cookieDropChance>
+  <commandPrefix>-</commandPrefix>
   <color>
     <r>255</r>
     <g>255</g>

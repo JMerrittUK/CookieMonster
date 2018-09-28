@@ -32,6 +32,7 @@ namespace CookieMonster.UserData
 
         // Adjust cookie spawn chance for this channel.
         public int cookieSpawnChance = 3;
+        public string commandPrefix;
 
         /// <summary>
         /// 
@@ -47,7 +48,15 @@ namespace CookieMonster.UserData
                 if (cookieDropped == false)
                 {
                     cookieDropped = true;
-                    await channel.SendMessageAsync("Cookie Monster dropped a :cookie:!");
+
+                    try
+                    {
+                        await channel.SendMessageAsync("Cookie Monster dropped a :cookie:!");
+                    }
+                    catch
+                    {
+                        Console.WriteLine("COULD NOT SEND MESSAGE");
+                    }
                 }
             }
         }
@@ -59,7 +68,15 @@ namespace CookieMonster.UserData
         public async void CookiePickedUp(CookieUser cookieWinner)
         {
             cookieDropped = false;
-            await channel.SendMessageAsync("@" + cookieWinner.userName + " just got a cookie!");
+
+            try
+            {
+                await channel.SendMessageAsync("@" + cookieWinner.userName + " just got a cookie!");
+            }
+            catch
+            {
+                Console.WriteLine("COULD NOT SEND MESSAGE");
+            }
 
             cookieWinner.cookies++;
 
@@ -68,7 +85,7 @@ namespace CookieMonster.UserData
 
             foreach (SocketMessage msg in userResponses)
             {
-                if (msg.Content.ToLower() == "pick" ||msg.Content.ToLower() == "!stats")
+                if (msg.Content.ToLower() == "pick" ||msg.Content.ToLower() == commandPrefix + "stats")
                 {
                     try
                     {

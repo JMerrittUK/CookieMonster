@@ -15,6 +15,7 @@ namespace CookieMonster.Structs
         public bool displayAllGames;
         public int totalGamesToDisplay;
         public int cookieDropChance;
+        public string commandPrefix;
         public BotColor color;
     }
 
